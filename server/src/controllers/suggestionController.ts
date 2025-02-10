@@ -7,7 +7,7 @@ export const getSuggestions = async (req: Request, res: Response) => {
     const suggestions = (await db.all(
       'SELECT * FROM Suggestions',
     )) as Suggestion[];
-    res.json({ data: suggestions });
+    res.json({ suggestions });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error getting suggestions' });
