@@ -1,4 +1,5 @@
 -- Up
+-- Mock data generated using Mockaroo.com
 INSERT INTO Suggestions (content, author, created_at) VALUES ('Suspendisse potenti.', 'Aime Pecht', '2025-02-02T06:18:36Z');
 INSERT INTO Suggestions (content, author, created_at) VALUES ('Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.', 'Kristy Romaynes', '2025-02-02T01:30:23Z');
 INSERT INTO Suggestions (content, author, created_at) VALUES ('Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', 'Ezechiel MacMillan', '2025-02-04T17:41:31Z');

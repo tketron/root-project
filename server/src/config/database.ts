@@ -16,18 +16,21 @@ export async function connectDB() {
     console.log('Connected to database');
   } catch (err) {
     console.error('Error connecting to database');
+    console.error(err);
   }
 
   // Perform migrations if necessary
   try {
     await db.migrate({
-      force: true, // In development, force the last migration to run
+      // In development, force the last migration to re-run
+      // Set to false in prod
+      force: true,
       migrationsPath: path.join(process.cwd(), 'src', 'migrations'),
     });
     console.log('Database up to date');
   } catch (err) {
+    console.error('Error syncing database');
     console.error(err);
-    console.error('Error applying migrations');
   }
 
   return db;

@@ -1,6 +1,6 @@
 -- Up
 CREATE TABLE Suggestions (
-    -- In production would use AUTOINCREMENT instead of ROWID
+    -- In production should use AUTOINCREMENT instead of ROWID to prevent duplicates
     suggestion_id INTEGER PRIMARY KEY DEFAULT ROWID NOT NULL,
     content TEXT NOT NULL,
     author TEXT NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE Suggestions (
 );
 
 CREATE TABLE Comments (
-    -- In production would use AUTOINCREMENT instead of ROWID
+    -- In production should use AUTOINCREMENT instead of ROWID to prevent duplicates
     comment_id INTEGER PRIMARY KEY DEFAULT ROWID NOT NULL,
     content TEXT NOT NULL,
     author TEXT NOT NULL,
