@@ -10,7 +10,8 @@ export const getComments = async (req: Request, res: Response) => {
     );
     res.json({ data: comments });
   } catch (error) {
-    res.status(500).json({ error });
+    console.error(error);
+    res.status(500).json({ error: 'Error getting comments' });
   }
 };
 
@@ -29,6 +30,6 @@ export const createComment = async (req: Request, res: Response) => {
     res.json();
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error });
+    res.status(500).json({ error: 'Error creating comment' });
   }
 };

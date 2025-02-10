@@ -10,7 +10,7 @@ export const getSuggestions = async (req: Request, res: Response) => {
     res.json({ data: suggestions });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error });
+    res.status(500).json({ error: 'Error getting suggestions' });
   }
 };
 
@@ -23,6 +23,7 @@ export const createSuggestion = async (req: Request, res: Response) => {
     );
     res.json();
   } catch (error) {
-    res.status(500).json({ error });
+    console.error(error);
+    res.status(500).json({ error: 'Error creating suggestion' });
   }
 };
