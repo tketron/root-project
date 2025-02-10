@@ -1,6 +1,7 @@
 import express from 'express';
 import { connectDB, db } from './config/database.ts';
 import suggestionRoutes from './routes/suggestionRoutes.ts';
+import commentRoutes from './routes/commentRoutes.ts';
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -9,6 +10,7 @@ app.use(express.json());
 
 // Mount routes
 app.use('/suggestions', suggestionRoutes);
+app.use('/', commentRoutes);
 
 async function start() {
   await connectDB();

@@ -7,7 +7,7 @@ export const getSuggestions = async (req: Request, res: Response) => {
     const suggestions = (await db.all(
       'SELECT * FROM Suggestions',
     )) as Suggestion[];
-    res.json(suggestions);
+    res.json({ data: suggestions });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error });
@@ -18,7 +18,7 @@ export const createSuggestion = async (req: Request, res: Response) => {
   const { content, author } = req.body;
   try {
     const result = await db.run(
-      `INSERT INTO Suggestions (content, author) VALUES (:content, :author)`,
+      'INSERT INTO Suggestions (content, author) VALUES (:content, :author)',
       { ':content': content, ':author': author },
     );
     res.json();
