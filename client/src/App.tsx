@@ -5,6 +5,7 @@ import { useState } from 'react';
 import SuggestionBoardAppBar from './components/SuggestionBoardAppBar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { UserProvider } from './hooks/context/useUserContext';
 
 const darkTheme = createTheme({
   palette: {
@@ -21,17 +22,19 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <Box>
-        <SuggestionBoardAppBar />
-        <Box sx={{ display: 'flex' }}>
-          <SuggestionsSideBar
-            selectedSuggestionID={selectedSuggestionID}
-            onSuggestionSelection={handleSelectedSuggestionChange}
-          />
-          <CommentsContainer selectedSuggestionID={selectedSuggestionID} />
+      <UserProvider>
+        <CssBaseline />
+        <Box>
+          <SuggestionBoardAppBar />
+          <Box sx={{ display: 'flex' }}>
+            <SuggestionsSideBar
+              selectedSuggestionID={selectedSuggestionID}
+              onSuggestionSelection={handleSelectedSuggestionChange}
+            />
+            <CommentsContainer selectedSuggestionID={selectedSuggestionID} />
+          </Box>
         </Box>
-      </Box>
+      </UserProvider>
     </ThemeProvider>
   );
 }

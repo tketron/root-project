@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Comment } from '../../../server/src/models/comment';
+import { Comment } from '../../../../server/src/models/comment';
 
 const API = 'http://localhost:3000/suggestions';
 

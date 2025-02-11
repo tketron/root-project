@@ -1,5 +1,5 @@
 import { Box, List } from '@mui/material';
-import useGetSuggestions from '../queries/useGetSuggestions';
+import useGetSuggestions from '../hooks/queries/useGetSuggestions';
 import SuggestionListItem from './SuggestionListItem';
 
 interface SuggestionsSideBarProps {

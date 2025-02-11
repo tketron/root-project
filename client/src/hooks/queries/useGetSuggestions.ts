@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Suggestion } from '../../../server/src/models/suggestion';
+import { Suggestion } from '../../../../server/src/models/suggestion';
 
 const API = 'http://localhost:3000/suggestions';
 
