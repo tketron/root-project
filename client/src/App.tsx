@@ -15,6 +15,7 @@ function App() {
   return (
     <Box>
       <SuggestionsSideBar
+        selectedSuggestionID={selectedSuggestionID}
         onSuggestionSelection={handleSelectedSuggestionChange}
       />
       <CommentsContainer selectedSuggestionID={selectedSuggestionID} />

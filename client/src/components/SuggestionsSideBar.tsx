@@ -1,20 +1,15 @@
-import {
-  Box,
-  Button,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-} from '@mui/material';
+import { Box, Button, Drawer, List } from '@mui/material';
 import useGetSuggestions from '../queries/useGetSuggestions';
 import { useState } from 'react';
+import SuggestionListItem from './SuggestionListItem';
 
 interface SuggestionsSideBarProps {
+  selectedSuggestionID: number;
   onSuggestionSelection: (suggestionID: number) => void;
 }
 
 export default function SuggestionsSideBar({
+  selectedSuggestionID,
   onSuggestionSelection,
 }: SuggestionsSideBarProps) {
   const { suggestions } = useGetSuggestions();
@@ -22,10 +17,6 @@ export default function SuggestionsSideBar({
 
   function toggleDrawer(newOpen: boolean) {
     setOpen(newOpen);
-  }
-
-  function handleSuggestionClick(suggestionID: number) {
-    onSuggestionSelection(suggestionID);
   }
 
   return (
@@ -39,15 +30,12 @@ export default function SuggestionsSideBar({
           <List>
             {suggestions.map((suggestion) => {
               return (
-                <ListItem key={suggestion.suggestion_id}>
-                  <ListItemButton
-                    onClick={() =>
-                      handleSuggestionClick(suggestion.suggestion_id)
-                    }
-                  >
-                    <ListItemText>{suggestion.content}</ListItemText>
-                  </ListItemButton>
-                </ListItem>
+                <SuggestionListItem
+                  key={suggestion.suggestion_id}
+                  suggestion={suggestion}
+                  selectedSuggestionID={selectedSuggestionID}
+                  onSuggestionSelection={onSuggestionSelection}
+                />
               );
             })}
           </List>
