@@ -6,6 +6,7 @@ import {
 } from '@mui/material';
 import { Suggestion } from '../../../server/src/models/suggestion';
 import BackgroundLetterAvatar from './common/BackgroundLetterAvatar';
+import { formatDateTime } from '../utils/datetime';
 
 interface SuggestionListItemProps {
   suggestion: Suggestion;
@@ -33,7 +34,7 @@ export default function SuggestionListItem({
         </ListItemAvatar>
         <ListItemText
           primary={suggestion.content}
-          secondary={suggestion.created_at}
+          secondary={formatDateTime(suggestion.created_at)}
         ></ListItemText>
       </ListItemButton>
     </ListItem>

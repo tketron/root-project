@@ -6,8 +6,6 @@ import { useState } from 'react';
 function App() {
   const [selectedSuggestionID, setSelectedSuggestionID] = useState<number>(0);
 
-  console.log(selectedSuggestionID);
-
   function handleSelectedSuggestionChange(suggestionID: number) {
     setSelectedSuggestionID(suggestionID);
   }
