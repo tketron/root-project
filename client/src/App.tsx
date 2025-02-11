@@ -11,7 +11,7 @@ function App() {
   }
 
   return (
-    <Box>
+    <Box sx={{ display: 'flex' }}>
       <SuggestionsSideBar
         selectedSuggestionID={selectedSuggestionID}
         onSuggestionSelection={handleSelectedSuggestionChange}

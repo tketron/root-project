@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import useGetCommentsBySuggestionID from '../queries/useGetCommentsBySuggestionID';
+import CommentItem from './CommentItem';
 
 interface CommentsContainerProps {
   selectedSuggestionID: number;
@@ -11,12 +12,16 @@ export default function CommentsContainer({
   const { comments } = useGetCommentsBySuggestionID(selectedSuggestionID);
   console.log(comments);
   return (
-    <Box sx={{ border: '1px solid black' }}>
-      <ul>
-        {comments.map((comment) => {
-          return <li>{comment.content}</li>;
-        })}
-      </ul>
+    <Box sx={{ border: '1px solid black', flexGrow: 1 }}>
+      {comments.map((comment) => {
+        return (
+          <CommentItem
+            key={comment.comment_id}
+            comment={comment}
+          />
+        );
+        // return <li>{comment.content}</li>;
+      })}
     </Box>
   );
 }
