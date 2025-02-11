@@ -1,19 +1,20 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Suggestion } from '../../../server/src/models/suggestion';
 
 const API = 'http://localhost:3000/suggestions';
 
 export default function useGetSuggestions() {
-  const [data, setData] = useState([]);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(`${API}`);
-      setData(result.data);
+      setSuggestions(result.data.data);
     };
 
     fetchData();
   }, []);
 
-  return { suggestions: data };
+  return { suggestions };
 }

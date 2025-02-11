@@ -1,19 +1,22 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Comment } from '../../../server/src/models/comment';
 
 const API = 'http://localhost:3000/suggestions';
 
 export default function useGetCommentsBySuggestionID(suggestionID: number) {
-  const [data, setData] = useState([]);
+  const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(`${API}/${suggestionID}/comments`);
-      setData(result.data);
+      setComments(result.data.data);
     };
 
-    fetchData();
-  }, []);
+    if (suggestionID !== 0) {
+      fetchData();
+    }
+  }, [suggestionID]);
 
-  return { comments: data };
+  return { comments };
 }

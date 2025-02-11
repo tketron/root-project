@@ -4,10 +4,8 @@ import { Suggestion } from '../models/suggestion.ts';
 
 export const getSuggestions = async (req: Request, res: Response) => {
   try {
-    const suggestions = (await db.all(
-      'SELECT * FROM Suggestions',
-    )) as Suggestion[];
-    res.json({ suggestions });
+    const data = (await db.all('SELECT * FROM Suggestions')) as Suggestion[];
+    res.json({ data });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error getting suggestions' });

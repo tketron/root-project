@@ -4,11 +4,11 @@ import { db } from '../config/database.ts';
 export const getComments = async (req: Request, res: Response) => {
   const { suggestionID } = req.params;
   try {
-    const comments = await db.all(
+    const data = await db.all(
       'SELECT * FROM Comments WHERE suggestion_id = :suggestionID',
       { ':suggestionID': suggestionID },
     );
-    res.json({ data: comments });
+    res.json({ data });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error getting comments' });
