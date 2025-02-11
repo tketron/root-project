@@ -20,7 +20,6 @@ export default function CommentsContainer({
             comment={comment}
           />
         );
-        // return <li>{comment.content}</li>;
       })}
     </Box>
   );
