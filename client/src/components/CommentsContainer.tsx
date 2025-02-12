@@ -11,7 +11,6 @@ export default function CommentsContainer({
   selectedSuggestionID,
 }: CommentsContainerProps) {
   const { comments } = useGetCommentsBySuggestionID(selectedSuggestionID);
-  console.log(comments);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Box>
