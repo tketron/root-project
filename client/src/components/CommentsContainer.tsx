@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import useGetCommentsBySuggestionID from '../hooks/queries/useGetCommentsBySuggestionID';
 import CommentItem from './CommentItem';
 import NewCommentInput from './NewCommentInput';
+import { Comment } from '../../../server/src/models/comment';
 
 interface CommentsContainerProps {
   selectedSuggestionID: number;
@@ -10,7 +11,13 @@ interface CommentsContainerProps {
 export default function CommentsContainer({
   selectedSuggestionID,
 }: CommentsContainerProps) {
-  const { comments } = useGetCommentsBySuggestionID(selectedSuggestionID);
+  const { comments, setComments } =
+    useGetCommentsBySuggestionID(selectedSuggestionID);
+
+  function handleNewComment(comment: Comment) {
+    setComments((previousComments) => [...previousComments, comment]);
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Box>
@@ -23,7 +30,10 @@ export default function CommentsContainer({
           );
         })}
       </Box>
-      <NewCommentInput suggestionID={selectedSuggestionID} />
+      <NewCommentInput
+        suggestionID={selectedSuggestionID}
+        onNewComment={handleNewComment}
+      />
     </Box>
   );
 }

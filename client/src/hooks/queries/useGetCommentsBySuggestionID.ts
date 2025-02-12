@@ -18,5 +18,5 @@ export default function useGetCommentsBySuggestionID(suggestionID: number) {
     }
   }, [suggestionID]);
 
-  return { comments };
+  return { comments, setComments };
 }

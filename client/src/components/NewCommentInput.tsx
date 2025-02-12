@@ -1,28 +1,32 @@
-import {
-  Box,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-  TextField,
-} from '@mui/material';
+import { Box, IconButton, InputAdornment, OutlinedInput } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useState } from 'react';
 import { useUserContext } from '../hooks/context/useUserContext';
 import usePostComment from '../hooks/queries/usePostComment';
+import { Comment } from '../../../server/src/models/comment';
 
 interface NewCommentInputProps {
   suggestionID: number;
+  onNewComment: (comment: Comment) => void;
 }
 
 export default function NewCommentInput({
   suggestionID,
+  onNewComment,
 }: NewCommentInputProps) {
   const [comment, setComment] = useState('');
   const { user } = useUserContext();
-  const { newComment, postComment } = usePostComment();
+  const { postComment } = usePostComment();
 
-  function handleCommentSubmission() {
-    postComment({ content: comment, author: user, suggestionID });
+  async function handleCommentSubmission() {
+    const result = await postComment({
+      content: comment,
+      author: user,
+      suggestionID,
+    });
+    if (result && result.status === 201) {
+      onNewComment(result.data);
+    }
     setComment('');
   }
 

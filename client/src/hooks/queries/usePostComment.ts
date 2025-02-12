@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Comment } from '../../../../server/src/models/comment';
 
 const API = 'http://localhost:3000/suggestions';
 
@@ -11,10 +9,6 @@ interface PostCommentParams {
 }
 
 export default function usePostComment() {
-  const [data, setData] = useState<Comment | null>(null);
-
-  console.log();
-
   async function postComment({
     content,
     author,
@@ -25,12 +19,11 @@ export default function usePostComment() {
         content,
         author,
       });
-      console.log(result);
-      // setData(result.data);
+      return result;
     } catch (error) {
       console.error(error);
     }
   }
 
-  return { data, postComment };
+  return { postComment };
 }
