@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, List } from '@mui/material';
+import { Box, Button, List } from '@mui/material';
 import useGetSuggestions from '../hooks/queries/useGetSuggestions';
 import SuggestionListItem from './SuggestionListItem';
 import usePostSuggestion from '../hooks/queries/usePostSuggestion';
@@ -21,7 +21,6 @@ export default function SuggestionsSideBar({
   const { postSuggestion } = usePostSuggestion();
   const { user } = useUserContext();
   const [addSuggestionOpen, setAddSuggestionOpen] = useState(false);
-  console.log('SuggestionSideBar rendering', suggestions);
 
   function handleAddSuggestionDialogClose(
     suggestion: string,
@@ -41,39 +40,40 @@ export default function SuggestionsSideBar({
   }
 
   return (
-    // <Box sx={{ border: '1px solid black', width: '20rem', overflowY: 'auto' }}>
-    <Box sx={{ width: '40rem', overflowY: 'auto' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Button onClick={handlePostRandomSuggestion}>
+    <Box sx={{ width: '360px', height: 'calc(100% - 64px)' }}>
+      <Box sx={{ display: 'flex' }}>
+        <Button
+          disabled={!user}
+          onClick={handlePostRandomSuggestion}
+        >
           Post a random suggestion
         </Button>
-        <Button>
+        <Button
+          disabled={!user}
+          onClick={() => setAddSuggestionOpen(true)}
+        >
           Add a new suggestion
-          <IconButton
-            disabled={!user}
-            onClick={() => setAddSuggestionOpen(true)}
-          >
-            <AddCircleOutlineIcon />
-          </IconButton>
+          <AddCircleOutlineIcon />
         </Button>
+        <AddSuggestionDialog
+          open={addSuggestionOpen}
+          onClose={handleAddSuggestionDialogClose}
+        />
       </Box>
-      <AddSuggestionDialog
-        open={addSuggestionOpen}
-        onClose={handleAddSuggestionDialogClose}
-      />
-      <List>
-        {suggestions.map((suggestion) => {
-          return (
-            <SuggestionListItem
-              key={suggestion.suggestion_id}
-              suggestion={suggestion}
-              selectedSuggestionID={selectedSuggestionID}
-              onSuggestionSelection={onSuggestionSelection}
-            />
-          );
-        })}
-      </List>
+      <Box sx={{ overflow: 'auto', height: 'calc(100% - 64px)' }}>
+        <List>
+          {suggestions.map((suggestion) => {
+            return (
+              <SuggestionListItem
+                key={suggestion.suggestion_id}
+                suggestion={suggestion}
+                selectedSuggestionID={selectedSuggestionID}
+                onSuggestionSelection={onSuggestionSelection}
+              />
+            );
+          })}
+        </List>
+      </Box>
     </Box>
-    // </Box>
   );
 }

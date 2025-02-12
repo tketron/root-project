@@ -35,6 +35,7 @@ export default function NewCommentInput({
       <OutlinedInput
         disabled={!user || suggestionID === 0}
         value={comment}
+        fullWidth
         onChange={(e) => setComment(e.target.value)}
         endAdornment={
           <InputAdornment position="end">

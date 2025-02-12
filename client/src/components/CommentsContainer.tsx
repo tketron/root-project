@@ -19,8 +19,15 @@ export default function CommentsContainer({
   }
 
   return (
-    <Box sx={{ flexGrow: 1, height: '100%' }}>
-      <Box sx={{ overflow: 'auto' }}>
+    <Box
+      sx={{
+        height: 'calc(100vh - 64px)',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+      }}
+    >
+      <Box sx={{ overflow: 'auto', flexGrow: 1 }}>
         {comments.map((comment) => {
           return (
             <CommentItem
@@ -30,10 +37,12 @@ export default function CommentsContainer({
           );
         })}
       </Box>
-      <NewCommentInput
-        suggestionID={selectedSuggestionID}
-        onNewComment={handleNewComment}
-      />
+      <Box sx={{ height: '64px' }}>
+        <NewCommentInput
+          suggestionID={selectedSuggestionID}
+          onNewComment={handleNewComment}
+        />
+      </Box>
     </Box>
   );
 }

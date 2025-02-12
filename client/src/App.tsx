@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import SuggestionsSideBar from './components/SuggestionsSideBar';
 import CommentsContainer from './components/CommentsContainer';
 import { useState } from 'react';
@@ -26,24 +26,18 @@ function App() {
         <CssBaseline />
         <Box sx={{ height: '100vh' }}>
           <SuggestionBoardAppBar />
-          <Box sx={{ display: 'flex' }}>
-            <SuggestionsSideBar
-              selectedSuggestionID={selectedSuggestionID}
-              onSuggestionSelection={handleSelectedSuggestionChange}
-            />
-            <CommentsContainer selectedSuggestionID={selectedSuggestionID} />
+          <Box sx={{ display: 'flex', height: 'calc(100vh - 64px)' }}>
+            <Box sx={{ width: '360px', height: 'calc(100vh - 64px)' }}>
+              <SuggestionsSideBar
+                selectedSuggestionID={selectedSuggestionID}
+                onSuggestionSelection={handleSelectedSuggestionChange}
+              />
+            </Box>
+            <Box sx={{ flexGrow: 1, height: 'calc(100vh - 64px)' }}>
+              <CommentsContainer selectedSuggestionID={selectedSuggestionID} />
+            </Box>
           </Box>
         </Box>
-        {/* <Box sx={{ height: '100vh', overflow: 'hidden' }}>
-          <SuggestionBoardAppBar />
-          <Box sx={{ display: 'flex' }}>
-            <SuggestionsSideBar
-              selectedSuggestionID={selectedSuggestionID}
-              onSuggestionSelection={handleSelectedSuggestionChange}
-            />
-            <CommentsContainer selectedSuggestionID={selectedSuggestionID} />
-          </Box>
-        </Box> */}
       </UserProvider>
     </ThemeProvider>
   );
