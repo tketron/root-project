@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, List, Typography } from '@mui/material';
+import { Box, Button, IconButton, List } from '@mui/material';
 import useGetSuggestions from '../hooks/queries/useGetSuggestions';
 import SuggestionListItem from './SuggestionListItem';
 import usePostSuggestion from '../hooks/queries/usePostSuggestion';
@@ -34,20 +34,28 @@ export default function SuggestionsSideBar({
     }
   }
 
+  function handlePostRandomSuggestion() {
+    const suggestion = generateRandomSuggestion();
+    postSuggestion({ content: suggestion, author: user });
+    fetchSuggestions();
+  }
+
   return (
     // <Box sx={{ border: '1px solid black', width: '20rem', overflowY: 'auto' }}>
     <Box sx={{ width: '40rem', overflowY: 'auto' }}>
-      <Box>
-        <Button onClick={() => console.log(generateRandomSuggestion())}>
-          Generate random suggestion
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Button onClick={handlePostRandomSuggestion}>
+          Post a random suggestion
         </Button>
-        <Typography>Add a new suggestion</Typography>
-        <IconButton
-          disabled={!user}
-          onClick={() => setAddSuggestionOpen(true)}
-        >
-          <AddCircleOutlineIcon />
-        </IconButton>
+        <Button>
+          Add a new suggestion
+          <IconButton
+            disabled={!user}
+            onClick={() => setAddSuggestionOpen(true)}
+          >
+            <AddCircleOutlineIcon />
+          </IconButton>
+        </Button>
       </Box>
       <AddSuggestionDialog
         open={addSuggestionOpen}
