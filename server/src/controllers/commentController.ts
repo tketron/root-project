@@ -5,9 +5,9 @@ import { Comment } from '../models/comment.ts';
 export const getComments = async (req: Request, res: Response) => {
   const { suggestionID } = req.params;
   try {
-    // Get all comments
+    // Get all comments, sorted by ascending order of time (oldest fist)
     const data = (await db.all(
-      'SELECT * FROM Comments WHERE suggestion_id = :suggestionID',
+      'SELECT * FROM Comments WHERE suggestion_id = :suggestionID ORDER BY created_at',
       { ':suggestionID': suggestionID },
     )) as Comment[];
     res.json({ data });

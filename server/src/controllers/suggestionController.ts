@@ -4,7 +4,10 @@ import { Suggestion } from '../models/suggestion.ts';
 
 export const getSuggestions = async (req: Request, res: Response) => {
   try {
-    const data = (await db.all('SELECT * FROM Suggestions')) as Suggestion[];
+    // Return all suggestions sorted in descending order by time (newest first)
+    const data = (await db.all(
+      'SELECT * FROM Suggestions ORDER BY created_at DESC',
+    )) as Suggestion[];
     res.json({ data });
   } catch (error) {
     console.error(error);
