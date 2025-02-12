@@ -4,9 +4,9 @@ import {
   ListItemButton,
   ListItemText,
 } from '@mui/material';
-import { Suggestion } from '../../../server/src/models/suggestion';
-import BackgroundLetterAvatar from './common/BackgroundLetterAvatar';
-import { formatDateTime } from '../utils/datetime';
+import { Suggestion } from '../../../../server/src/models/suggestion';
+import BackgroundLetterAvatar from '../common/BackgroundLetterAvatar';
+import { formatDateTime } from '../../utils/datetime';
 
 interface SuggestionListItemProps {
   suggestion: Suggestion;

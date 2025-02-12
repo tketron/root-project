@@ -1,8 +1,8 @@
-import { Box, Container } from '@mui/material';
-import SuggestionsSideBar from './components/SuggestionsSideBar';
-import CommentsContainer from './components/CommentsContainer';
+import { Box } from '@mui/material';
+import SuggestionsSideBar from './components/SuggestionsSideBar/SuggestionsSideBar';
+import CommentsContainer from './components/CommentsPanel/CommentsContainer';
 import { useState } from 'react';
-import SuggestionBoardAppBar from './components/SuggestionBoardAppBar';
+import SuggestionBoardAppBar from './components/SuggestionBoardAppBar/SuggestionBoardAppBar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { UserProvider } from './hooks/context/useUserContext';

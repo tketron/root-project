@@ -1,6 +1,6 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
-import BackgroundLetterAvatar from './common/BackgroundLetterAvatar';
-import { useUserContext } from '../hooks/context/useUserContext';
+import BackgroundLetterAvatar from '../common/BackgroundLetterAvatar';
+import { useUserContext } from '../../hooks/context/useUserContext';
 import { useState } from 'react';
 import LoginDialog from './LoginDialog';
 

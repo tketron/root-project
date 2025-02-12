@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
-import useGetCommentsBySuggestionID from '../hooks/queries/useGetCommentsBySuggestionID';
+import useGetCommentsBySuggestionID from '../../hooks/queries/useGetCommentsBySuggestionID';
 import CommentItem from './CommentItem';
 import NewCommentInput from './NewCommentInput';
-import { Comment } from '../../../server/src/models/comment';
+import { Comment } from '../../../../server/src/models/comment';
 
 interface CommentsContainerProps {
   selectedSuggestionID: number;

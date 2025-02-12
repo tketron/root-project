@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
-import { Comment } from '../../../server/src/models/comment';
-import BackgroundLetterAvatar from './common/BackgroundLetterAvatar';
-import { formatDateTime } from '../utils/datetime';
+import { Comment } from '../../../../server/src/models/comment';
+import BackgroundLetterAvatar from '../common/BackgroundLetterAvatar';
+import { formatDateTime } from '../../utils/datetime';
 
 interface CommentItemProps {
   comment: Comment;

@@ -1,9 +1,9 @@
 import { Box, IconButton, InputAdornment, OutlinedInput } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useState } from 'react';
-import { useUserContext } from '../hooks/context/useUserContext';
-import usePostComment from '../hooks/queries/usePostComment';
-import { Comment } from '../../../server/src/models/comment';
+import { useUserContext } from '../../hooks/context/useUserContext';
+import usePostComment from '../../hooks/queries/usePostComment';
+import { Comment } from '../../../../server/src/models/comment';
 
 interface NewCommentInputProps {
   suggestionID: number;
