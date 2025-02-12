@@ -19,6 +19,7 @@ export const createComment = async (req: Request, res: Response) => {
   const { suggestionID } = req.params;
   const { content, author } = req.body;
   try {
+    // Insert comment into the table
     const result = await db.run(
       'INSERT INTO Comments (content, author, suggestion_id) VALUES (:content, :author, :suggestionID)',
       {
@@ -27,7 +28,14 @@ export const createComment = async (req: Request, res: Response) => {
         ':suggestionID': suggestionID,
       },
     );
-    res.json();
+
+    // Get the newly inserted comment
+    const newComment = await db.get(
+      'SELECT * FROM Comments WHERE comment_id = ?',
+      [result.lastID],
+    );
+
+    res.status(201).json(newComment);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error creating comment' });

@@ -15,11 +15,19 @@ export const getSuggestions = async (req: Request, res: Response) => {
 export const createSuggestion = async (req: Request, res: Response) => {
   const { content, author } = req.body;
   try {
+    // Insert suggestion into DB
     const result = await db.run(
       'INSERT INTO Suggestions (content, author) VALUES (:content, :author)',
       { ':content': content, ':author': author },
     );
-    res.json();
+
+    // Get the suggestion after it was inserted into the table
+    const newSuggestion = await db.get(
+      'SELECT * FROM Suggestions WHERE suggestion_id = ?',
+      [result.lastID],
+    );
+
+    res.status(201).json(newSuggestion);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error creating suggestion' });
