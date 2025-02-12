@@ -1,4 +1,5 @@
 import {
+  Divider,
   ListItem,
   ListItemAvatar,
   ListItemButton,
@@ -24,21 +25,25 @@ export default function SuggestionListItem({
   }
 
   return (
-    <ListItem key={suggestion.suggestion_id}>
-      <ListItemButton
-        onClick={() => handleSuggestionClick(suggestion.suggestion_id)}
-        selected={suggestion.suggestion_id === selectedSuggestionID}
-      >
-        <ListItemAvatar>
-          <BackgroundLetterAvatar name={suggestion.author} />
-        </ListItemAvatar>
-        <ListItemText
-          primary={suggestion.content}
-          secondary={`${suggestion.author}, ${formatDateTime(
-            suggestion.created_at,
-          )}`}
-        ></ListItemText>
-      </ListItemButton>
-    </ListItem>
+    <>
+      <ListItem>
+        {/* <ListItem key={suggestion.suggestion_id}> */}
+        <ListItemButton
+          onClick={() => handleSuggestionClick(suggestion.suggestion_id)}
+          selected={suggestion.suggestion_id === selectedSuggestionID}
+        >
+          <ListItemAvatar>
+            <BackgroundLetterAvatar name={suggestion.author} />
+          </ListItemAvatar>
+          <ListItemText
+            primary={suggestion.content}
+            secondary={`${suggestion.author}, ${formatDateTime(
+              suggestion.created_at,
+            )}`}
+          ></ListItemText>
+        </ListItemButton>
+      </ListItem>
+      <Divider component="li" />
+    </>
   );
 }

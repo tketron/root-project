@@ -29,17 +29,22 @@ export default function AddSuggestionDialog({
     <Dialog
       open={open}
       onClose={() => handleClose('', false)}
+      maxWidth="md"
     >
-      <DialogTitle>Add a new suggestion!</DialogTitle>
+      <DialogTitle sx={{ paddingBottom: '1rem' }}>
+        Add a new suggestion!
+      </DialogTitle>
       <DialogContent>
         <TextField
           label="Suggestion"
           value={suggestion}
           onChange={(e) => setSuggestion(e.target.value)}
           autoFocus
+          sx={{ width: '40rem' }}
         />
 
         <DialogActions>
+          <Button onClick={() => handleClose('', false)}>Cancel</Button>
           <Button onClick={() => handleClose(suggestion, true)}>
             Submit Suggestion
           </Button>

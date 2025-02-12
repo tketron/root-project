@@ -27,15 +27,17 @@ export default function LoginDialog({ open, onClose }: LoginDialogProps) {
       open={open}
       onClose={() => handleClose('', false)}
     >
-      <DialogTitle>Who are you?</DialogTitle>
+      <DialogTitle sx={{ paddingBottom: '1rem' }}>Who are you?</DialogTitle>
       <DialogContent>
         <TextField
           label="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           autoFocus
+          sx={{ width: '20rem' }}
         />
         <DialogActions>
+          <Button onClick={() => handleClose('', false)}>Cancel</Button>
           <Button onClick={() => handleClose(name, true)}>Login</Button>
         </DialogActions>
       </DialogContent>

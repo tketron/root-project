@@ -1,4 +1,4 @@
-import { Box, Button, List } from '@mui/material';
+import { Box, Button, Divider, List } from '@mui/material';
 import useGetSuggestions from '../../hooks/queries/useGetSuggestions';
 import SuggestionListItem from './SuggestionListItem';
 import usePostSuggestion from '../../hooks/queries/usePostSuggestion';
@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useUserContext } from '../../hooks/context/useUserContext';
 import AddSuggestionDialog from './AddSuggestionDialog';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import generateRandomSuggestion from '../../utils/randomSuggestion';
 
 interface SuggestionsSideBarProps {
@@ -50,15 +51,18 @@ export default function SuggestionsSideBar({
         <Button
           disabled={!user}
           onClick={handlePostRandomSuggestion}
+          variant="outlined"
         >
+          <HelpOutlineIcon />
           Post a random suggestion
         </Button>
         <Button
           disabled={!user}
           onClick={() => setAddSuggestionOpen(true)}
+          variant="outlined"
         >
-          Add a new suggestion
           <AddCircleOutlineIcon />
+          Add a new suggestion
         </Button>
         <AddSuggestionDialog
           open={addSuggestionOpen}
