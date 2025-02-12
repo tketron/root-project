@@ -14,6 +14,7 @@ export default function CommentsContainer({
   const { comments, setComments } =
     useGetCommentsBySuggestionID(selectedSuggestionID);
 
+  // If the new comment was successfully created, append it to the list instead of refetching the entire list
   function handleNewComment(comment: Comment) {
     setComments((previousComments) => [...previousComments, comment]);
   }

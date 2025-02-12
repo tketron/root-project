@@ -17,7 +17,7 @@ const UserContext = createContext<UserContextType>({
 });
 
 export function UserProvider({ children }: UserProviderParams) {
-  const [user, setUser] = useState<string>('Context User');
+  const [user, setUser] = useState<string>('');
 
   function login(username: string) {
     setUser(username);

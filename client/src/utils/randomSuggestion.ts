@@ -1,3 +1,4 @@
+// Generates a random sentence from a dictionary of buzzwords
 export default function generateRandomSuggestion(): string {
   const suggestion: string[] = [];
 
@@ -8,17 +9,16 @@ export default function generateRandomSuggestion(): string {
     // Generate a random number of words for the sentence between 3 and 6 inclusive
     const numWords = Math.floor(Math.random() * 6) + 3;
 
-    const words: string[] = [];
+    const sentence: string[] = [];
 
-    // For each word, add a random one from WORDS
     for (let j = 0; j < numWords; j++) {
       // Generate random index between 1 and 500 inclusive
       const wordIndex = Math.floor(Math.random() * 500) + 1;
-      words.push(WORDS[wordIndex]);
+      sentence.push(WORDS[wordIndex]);
     }
 
     // Join the sentence with spaces punctuated with a period
-    suggestion.push(`${words.join(' ')}.`);
+    suggestion.push(`${sentence.join(' ')}.`);
   }
 
   // Join the sentences with a space

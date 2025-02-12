@@ -6,6 +6,7 @@ import {
 
 const router = Router();
 
+// Mount routes related to suggestions
 router.get('/', getSuggestions);
 router.post('/', createSuggestion);
 

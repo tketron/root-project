@@ -24,6 +24,7 @@ export default function NewCommentInput({
       author: user,
       suggestionID,
     });
+    // If the comment was successfullly created, return the new comment so the full list doesn't have to be refetched
     if (result && result.status === 201) {
       onNewComment(result.data);
     }

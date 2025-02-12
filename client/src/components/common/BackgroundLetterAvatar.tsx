@@ -5,6 +5,7 @@ interface BackgroundLetterAvatarProps {
 }
 
 // Taken from https://mui.com/material-ui/react-avatar/#letter-avatars
+// Hashes the name to a unique background color
 function stringToColor(string: string) {
   let hash = 0;
   let i;
@@ -25,6 +26,7 @@ function stringToColor(string: string) {
   return color;
 }
 
+// Splits the name to display the first letter of the first 1 or 2 words
 function stringAvatar(name: string) {
   const splitName = name.split(' ');
   let children;

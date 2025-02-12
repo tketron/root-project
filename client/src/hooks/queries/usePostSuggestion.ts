@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const API = 'http://localhost:3000/suggestions';
+import endpoints from '../../config/endpoints';
 
 interface PostSuggestionParams {
   content: string;
@@ -10,7 +9,7 @@ interface PostSuggestionParams {
 export default function usePostSuggestion() {
   async function postSuggestion({ content, author }: PostSuggestionParams) {
     try {
-      const result = await axios.post(API, {
+      const result = await axios.post(endpoints.base, {
         content,
         author,
       });

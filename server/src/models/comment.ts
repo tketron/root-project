@@ -1,3 +1,4 @@
+// Interface representation of rows in Comments table
 export interface Comment {
   comment_id: number;
   content: string;

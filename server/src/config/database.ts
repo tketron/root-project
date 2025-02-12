@@ -2,6 +2,7 @@ import sqlite3 from 'sqlite3';
 import { open, Database } from 'sqlite';
 import path from 'path';
 
+// Print more descriptive logs and error messages
 sqlite3.verbose();
 
 let db: Database<sqlite3.Database, sqlite3.Statement>;
@@ -22,8 +23,7 @@ export async function connectDB() {
   // Perform migrations if necessary
   try {
     await db.migrate({
-      // In development, force the last migration to re-run
-      // Set to false in prod
+      // In development, force the last migration to re-run to keep db clean
       force: true,
       migrationsPath: path.join(process.cwd(), 'src', 'migrations'),
     });

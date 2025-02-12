@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const API = 'http://localhost:3000/suggestions';
+import endpoints from '../../config/endpoints';
 
 interface PostCommentParams {
   suggestionID: number;
@@ -15,10 +14,13 @@ export default function usePostComment() {
     suggestionID,
   }: PostCommentParams) {
     try {
-      const result = await axios.post(`${API}/${suggestionID}/comments`, {
-        content,
-        author,
-      });
+      const result = await axios.post(
+        `${endpoints.base}/${suggestionID}/comments`,
+        {
+          content,
+          author,
+        },
+      );
       return result;
     } catch (error) {
       console.error(error);

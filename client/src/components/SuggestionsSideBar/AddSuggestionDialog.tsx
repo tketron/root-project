@@ -19,6 +19,7 @@ export default function AddSuggestionDialog({
 }: AddSuggestionDialogProps) {
   const [suggestion, setSuggestion] = useState('');
 
+  // shouldUpdate is true only if the dialog was intentially closed by clicking 'Submit suggestion'
   function handleClose(suggestion: string, shouldUpdate: boolean) {
     onClose(suggestion, shouldUpdate);
     setSuggestion('');

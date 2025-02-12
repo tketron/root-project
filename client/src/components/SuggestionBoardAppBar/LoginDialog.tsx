@@ -16,6 +16,7 @@ interface LoginDialogProps {
 export default function LoginDialog({ open, onClose }: LoginDialogProps) {
   const [name, setName] = useState('');
 
+  // shouldUpdate determines whether the dialog was closed by intentionally pressing Login vs simply closing the dialog
   function handleClose(username: string, shouldUpdate: boolean) {
     onClose(username, shouldUpdate);
     setName('');

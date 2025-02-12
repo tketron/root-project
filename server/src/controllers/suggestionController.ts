@@ -21,11 +21,11 @@ export const createSuggestion = async (req: Request, res: Response) => {
       { ':content': content, ':author': author },
     );
 
-    // Get the suggestion after it was inserted into the table
-    const newSuggestion = await db.get(
+    // Get and return the suggestion after it was inserted into the table
+    const newSuggestion = (await db.get(
       'SELECT * FROM Suggestions WHERE suggestion_id = ?',
       [result.lastID],
-    );
+    )) as Suggestion;
 
     res.status(201).json(newSuggestion);
   } catch (error) {

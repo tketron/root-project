@@ -22,6 +22,8 @@ export default function SuggestionsSideBar({
   const { user } = useUserContext();
   const [addSuggestionOpen, setAddSuggestionOpen] = useState(false);
 
+  // Only posts a new suggestion if the text is not empty and the dialog was was closed by submitting the suggestion
+  // Then refetches the list of suggestions
   function handleAddSuggestionDialogClose(
     suggestion: string,
     shouldUpdate: boolean,
@@ -33,6 +35,8 @@ export default function SuggestionsSideBar({
     }
   }
 
+  // Generates a random suggestion and then posts it
+  // Then refeteches the list of suggestions
   function handlePostRandomSuggestion() {
     const suggestion = generateRandomSuggestion();
     postSuggestion({ content: suggestion, author: user });
@@ -42,6 +46,7 @@ export default function SuggestionsSideBar({
   return (
     <Box sx={{ width: '360px', height: 'calc(100% - 64px)' }}>
       <Box sx={{ display: 'flex' }}>
+        {/* Adding new suggestions is disabled if a user is not logged in */}
         <Button
           disabled={!user}
           onClick={handlePostRandomSuggestion}
@@ -60,6 +65,7 @@ export default function SuggestionsSideBar({
           onClose={handleAddSuggestionDialogClose}
         />
       </Box>
+
       <Box sx={{ overflow: 'auto', height: 'calc(100% - 64px)' }}>
         <List>
           {suggestions.map((suggestion) => {
