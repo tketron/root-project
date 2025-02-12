@@ -14,7 +14,7 @@ export default function CommentItem({ comment }: CommentItemProps) {
       <Box sx={{ marginLeft: '1rem' }}>
         <Typography variant="body1">{comment.content}</Typography>
         <Typography variant="subtitle2">
-          {formatDateTime(comment.created_at)}
+          {`${comment.author}, ${formatDateTime(comment.created_at)}`}
         </Typography>
       </Box>
     </Box>

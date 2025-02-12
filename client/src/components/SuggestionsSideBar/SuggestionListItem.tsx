@@ -34,7 +34,9 @@ export default function SuggestionListItem({
         </ListItemAvatar>
         <ListItemText
           primary={suggestion.content}
-          secondary={formatDateTime(suggestion.created_at)}
+          secondary={`${suggestion.author}, ${formatDateTime(
+            suggestion.created_at,
+          )}`}
         ></ListItemText>
       </ListItemButton>
     </ListItem>
