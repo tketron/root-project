@@ -10,7 +10,7 @@ export default function useGetSuggestions() {
   const fetchSuggestions = useCallback(async () => {
     try {
       const result = await axios.get(`${API}`);
-      setSuggestions(result.data.data);
+      setSuggestions([...result.data.data]);
     } catch (error) {
       console.error(error);
     }

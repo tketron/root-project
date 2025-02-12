@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useUserContext } from '../hooks/context/useUserContext';
 import AddSuggestionDialog from './AddSuggestionDialog';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import generateRandomSuggestion from '../utils/randomSuggestion';
 
 interface SuggestionsSideBarProps {
   selectedSuggestionID: number;
@@ -37,6 +38,9 @@ export default function SuggestionsSideBar({
     // <Box sx={{ border: '1px solid black', width: '20rem', overflowY: 'auto' }}>
     <Box sx={{ width: '40rem', overflowY: 'auto' }}>
       <Box>
+        <Button onClick={() => console.log(generateRandomSuggestion())}>
+          Generate random suggestion
+        </Button>
         <Typography>Add a new suggestion</Typography>
         <IconButton
           disabled={!user}
