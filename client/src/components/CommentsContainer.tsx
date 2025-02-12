@@ -19,8 +19,8 @@ export default function CommentsContainer({
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Box>
+    <Box sx={{ flexGrow: 1, height: '100%' }}>
+      <Box sx={{ overflow: 'auto' }}>
         {comments.map((comment) => {
           return (
             <CommentItem

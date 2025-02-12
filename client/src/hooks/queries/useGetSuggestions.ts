@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Suggestion } from '../../../../server/src/models/suggestion';
 
 const API = 'http://localhost:3000/suggestions';
@@ -7,14 +7,18 @@ const API = 'http://localhost:3000/suggestions';
 export default function useGetSuggestions() {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchSuggestions = useCallback(async () => {
+    try {
       const result = await axios.get(`${API}`);
       setSuggestions(result.data.data);
-    };
+    } catch (error) {
+      console.error(error);
+    }
+  }, [setSuggestions]);
 
-    fetchData();
-  }, []);
+  useEffect(() => {
+    fetchSuggestions();
+  }, [fetchSuggestions]);
 
-  return { suggestions };
+  return { suggestions, fetchSuggestions };
 }

@@ -24,7 +24,7 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <UserProvider>
         <CssBaseline />
-        <Box>
+        <Box sx={{ height: '100vh' }}>
           <SuggestionBoardAppBar />
           <Box sx={{ display: 'flex' }}>
             <SuggestionsSideBar
@@ -34,6 +34,16 @@ function App() {
             <CommentsContainer selectedSuggestionID={selectedSuggestionID} />
           </Box>
         </Box>
+        {/* <Box sx={{ height: '100vh', overflow: 'hidden' }}>
+          <SuggestionBoardAppBar />
+          <Box sx={{ display: 'flex' }}>
+            <SuggestionsSideBar
+              selectedSuggestionID={selectedSuggestionID}
+              onSuggestionSelection={handleSelectedSuggestionChange}
+            />
+            <CommentsContainer selectedSuggestionID={selectedSuggestionID} />
+          </Box>
+        </Box> */}
       </UserProvider>
     </ThemeProvider>
   );

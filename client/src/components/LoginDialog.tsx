@@ -33,7 +33,7 @@ export default function LoginDialog({ open, onClose }: LoginDialogProps) {
           value={name}
           onChange={(e) => setName(e.target.value)}
           autoFocus
-        ></TextField>
+        />
         <DialogActions>
           <Button onClick={() => handleClose(name, true)}>Login</Button>
         </DialogActions>
