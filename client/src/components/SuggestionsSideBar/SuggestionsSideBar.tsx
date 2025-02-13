@@ -2,7 +2,7 @@ import { Box, Button, List } from '@mui/material';
 import useGetSuggestions from '../../hooks/queries/useGetSuggestions';
 import SuggestionListItem from './SuggestionListItem';
 import usePostSuggestion from '../../hooks/queries/usePostSuggestion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useUserContext } from '../../hooks/context/useUserContext';
 import AddSuggestionDialog from './AddSuggestionDialog';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';

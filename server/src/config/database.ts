@@ -23,8 +23,8 @@ export async function connectDB() {
   // Perform migrations if necessary
   try {
     await db.migrate({
-      // In development, force the last migration to re-run to keep db clean
-      force: true,
+      // In development, uncomment to force the last migration to re-run to keep db clean
+      // force: true,
       migrationsPath: path.join(process.cwd(), 'src', 'migrations'),
     });
     console.log('Database up to date');
