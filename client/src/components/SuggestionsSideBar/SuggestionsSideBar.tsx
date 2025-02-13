@@ -1,8 +1,8 @@
-import { Box, Button, Divider, List } from '@mui/material';
+import { Box, Button, List } from '@mui/material';
 import useGetSuggestions from '../../hooks/queries/useGetSuggestions';
 import SuggestionListItem from './SuggestionListItem';
 import usePostSuggestion from '../../hooks/queries/usePostSuggestion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUserContext } from '../../hooks/context/useUserContext';
 import AddSuggestionDialog from './AddSuggestionDialog';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -25,23 +25,23 @@ export default function SuggestionsSideBar({
 
   // Only posts a new suggestion if the text is not empty and the dialog was was closed by submitting the suggestion
   // Then refetches the list of suggestions
-  function handleAddSuggestionDialogClose(
+  async function handleAddSuggestionDialogClose(
     suggestion: string,
     shouldUpdate: boolean,
   ) {
     setAddSuggestionOpen(false);
     if (suggestion && shouldUpdate) {
-      postSuggestion({ content: suggestion, author: user });
-      fetchSuggestions();
+      await postSuggestion({ content: suggestion, author: user });
+      await fetchSuggestions();
     }
   }
 
   // Generates a random suggestion and then posts it
   // Then refeteches the list of suggestions
-  function handlePostRandomSuggestion() {
+  async function handlePostRandomSuggestion() {
     const suggestion = generateRandomSuggestion();
-    postSuggestion({ content: suggestion, author: user });
-    fetchSuggestions();
+    await postSuggestion({ content: suggestion, author: user });
+    await fetchSuggestions();
   }
 
   return (

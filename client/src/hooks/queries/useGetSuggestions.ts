@@ -9,11 +9,11 @@ export default function useGetSuggestions() {
   const fetchSuggestions = useCallback(async () => {
     try {
       const result = await axios.get(`${endpoints.base}`);
-      setSuggestions([...result.data.data]);
+      setSuggestions(result.data.data);
     } catch (error) {
       console.error(error);
     }
-  }, [setSuggestions]);
+  }, []);
 
   useEffect(() => {
     fetchSuggestions();
